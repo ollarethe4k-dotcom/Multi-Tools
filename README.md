@@ -64,54 +64,54 @@ python Multi_Tools_11.py
 ## 🔍 Feature Details
 
 ### 1. Ethernet MAC Changer
-Modifies the MAC address in the registry and cycles the adapter[cite: 2].
-*   **Logic:** Updates `HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}`[cite: 2].
-*   **Note:** The network connection will drop for approximately 3-5 seconds during the reset phase[cite: 2].
+Modifies the MAC address in the registry and cycles the adapter.
+*   **Logic:** Updates `HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}`.
+*   **Note:** The network connection will drop for approximately 3-5 seconds during the reset phase.
 
 ### 2. Disk ID Changer
-*   **MBR:** Modifies the 8-character hex signature[cite: 2].
-*   **GPT:** Modifies the unique GUID[cite: 2].
-*   **Mechanism:** Takes the disk **Offline**, applies the new ID, and brings it back **Online** to force Windows to recognize the change[cite: 2].
-*   **⚠️ WARNING:** Changing the ID of the `C:` drive is highly risky and may lead to "Inaccessible Boot Device" errors[cite: 2].
+*   **MBR:** Modifies the 8-character hex signature.
+*   **GPT:** Modifies the unique GUID.
+*   **Mechanism:** Takes the disk **Offline**, applies the new ID, and brings it back **Online** to force Windows to recognize the change.
+*   **⚠️ WARNING:** Changing the ID of the `C:` drive is highly risky and may lead to "Inaccessible Boot Device" errors.
 
 ### 3. Security & Stealth
-*   **Defender Exclusion:** The tool automatically attempts to add its working directory and the Python executable to the Windows Defender exclusion list to prevent "Access Denied" errors during low-level writes[cite: 2].
-*   **Input Validation:** All ID formats are strictly validated before being written to the system[cite: 2].
+*   **Defender Exclusion:** The tool automatically attempts to add its working directory and the Python executable to the Windows Defender exclusion list to prevent "Access Denied" errors during low-level writes.
+*   **Input Validation:** All ID formats are strictly validated before being written to the system.
 
 ---
 
 ## 🛠️ Troubleshooting
 
 ### Disk remains "Offline" or "Missing"
-If a disk does not automatically reappear in File Explorer after a change[cite: 2]:
-1. Open **Disk Management** (`diskmgmt.msc`)[cite: 2].
-2. Locate the disk (it will be marked as *Offline* with a black arrow)[cite: 2].
-3. Right-click the Disk Name (e.g., *Disk 1*) and select **Online**[cite: 2].
+If a disk does not automatically reappear in File Explorer after a change:
+1. Open **Disk Management** (`diskmgmt.msc`).
+2. Locate the disk (it will be marked as *Offline* with a black arrow).
+3. Right-click the Disk Name (e.g., *Disk 1*) and select **Online**.
 
 ### Access Denied Errors
-Even with built-in exclusions, some third-party Antivirus software may aggressively block the script's low-level execution[cite: 2].
-*   **Solution:** Temporarily disable "Real-time Protection" or "Tamper Protection" during the operation[cite: 2].
+Even with built-in exclusions, some third-party Antivirus software may aggressively block the script's low-level execution.
+*   **Solution:** Temporarily disable "Real-time Protection" or "Tamper Protection" during the operation.
 
 ---
 
 ## 🤝 Collaboration & Code Contributions
 
-We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for[cite: 2]:
+We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:
 
-*   **Forensic Consistency:** Help us implement advanced *timestomping* techniques to maintain registry and file system consistency after ID modifications[cite: 2].
-*   **AV Compatibility:** Propose methods to refine dynamic exclusion logic, ensuring the tool operates smoothly alongside modern EDR/Antivirus heuristics during legitimate research[cite: 2].
-*   **Optimization:** Improve PowerShell execution speed to minimize the "offline" window for hardware devices[cite: 2].
+*   **Forensic Consistency:** Help us implement advanced *timestomping* techniques to maintain registry and file system consistency after ID modifications.
+*   **AV Compatibility:** Propose methods to refine dynamic exclusion logic, ensuring the tool operates smoothly alongside modern EDR/Antivirus heuristics during legitimate research.
+*   **Optimization:** Improve PowerShell execution speed to minimize the "offline" window for hardware devices.
 
 **Got a suggestion or found an issue?**
-*   **Suggestions:** We accept proposals for new hardware obfuscation features via Pull Requests[cite: 2].
-*   **Issue Reporting:** If a function fails (e.g., a Disk ID remains offline), please open an Issue so we can refine the error-handling logic[cite: 2].
+*   **Suggestions:** We accept proposals for new hardware obfuscation features via Pull Requests.
+*   **Issue Reporting:** If a function fails (e.g., a Disk ID remains offline), please open an Issue so we can refine the error-handling logic.
 
 ---
 
 ## 📜 License
 
-This project is distributed under the **MIT License**[cite: 2].
-Refer to the [LICENSE](LICENSE) file for detailed information[cite: 2].
+This project is distributed under the **MIT License**.
+Refer to the [LICENSE](LICENSE) file for detailed information.
 
 <div align="center">
   <i>Multi-Tools v1.1</i>
