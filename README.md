@@ -99,7 +99,7 @@ Even with built-in exclusions, some third-party Antivirus software may aggressiv
 We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:
 
 *   **Forensic Consistency:** Help us implement advanced *timestomping* techniques to maintain registry and file system consistency after ID modifications.
-*   **AV Compatibility:** Propose methods to refine dynamic exclusion logic, ensuring the tool operates smoothly alongside modern EDR/Antivirus heuristics during legitimate research.
+*   **AV Compatibility:** Propose methods to refine dynamic exclusion logic.
 *   **Optimization:** Improve PowerShell execution speed to minimize the "offline" window for hardware devices.
 
 **Got a suggestion or found an issue?**
