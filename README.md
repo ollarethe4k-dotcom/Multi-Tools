@@ -6,7 +6,6 @@
 </p>
 
 
-UNDER DEVELOPMENT (Beta): This tool is currently in active development. While core features are functional, users may encounter bugs or unexpected behavior.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 💡 COLLABORATION & FEEDBACK
