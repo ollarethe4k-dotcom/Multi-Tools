@@ -2,6 +2,7 @@
 
 # 🛠️ Multi-Tools: HWID Spoofer & System Utilities
 
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/blackhat.emi)
 ![OS: Windows 10/11](https://img.shields.io/badge/OS-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)
 ![Python: 3.7+](https://img.shields.io/badge/Python-3.7+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Stage: Beta](https://img.shields.io/badge/Stage-Beta-FF8C00?style=flat-square)
