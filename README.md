@@ -13,9 +13,6 @@
 
 </p>
 
-*A specialized Windows system administration tool designed for security researchers to modify hardware identifiers and test device-based security implementations.*
-
-</div>
 
 ---
 
