@@ -3,9 +3,9 @@
 <p align="center">
   <img src="--/one.gif" alt="Multi-Tools Vibe" width="600">
 </p>
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 A specialized Windows system administration tool designed for security researchers and bug bounty hunters to modify hardware identifiers and system configurations.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ⚠️ IMPORTANT NOTICES
 WINDOWS ONLY: This tool is designed exclusively for Windows 10 and 11. Do not attempt to run this on Linux or macOS.  
 
