@@ -16,7 +16,15 @@ Suggestions: We accept proposals for new hardware obfuscation features.
 
 Issue Reporting: If a function fails (e.g., a Disk ID remains offline), please report it so we can refine the error-handling logic.
 
-Code Contributions: Help us make "timestomping" or AV bypass procedures even more silent.
+Code Contributions:
+
+We welcome contributions that improve the tool's technical depth. Specifically, we are looking for:
+
+Forensic Consistency: Help us implement advanced timestomping techniques to maintain registry and file system consistency after ID modifications.
+
+AV Compatibility: Propose methods to refine dynamic exclusion logic, ensuring the tool operates smoothly alongside modern EDR/Antivirus heuristics during legitimate research.
+
+Optimization: Improve PowerShell execution speed to minimize the "offline" window for hardware devices
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ⚠️ DISCLAIMER
