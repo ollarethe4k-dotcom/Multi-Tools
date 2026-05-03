@@ -7,7 +7,11 @@
 ![Stage: Beta](https://img.shields.io/badge/Stage-Beta-FF8C00?style=flat-square)
 ![License: MIT](https://img.shields.io/badge/License-MIT-success?style=flat-square)
 
-<img src="./one.gif" alt="Multi-Tools Vibe" width="600" style="border-radius: 10px; margin: 20px 0;">
+<p align="center">
+
+  <img src="--/one.gif" alt="Multi-Tools Vibe" width="600">
+
+</p>
 
 *A specialized Windows system administration tool designed for security researchers to modify hardware identifiers and test device-based security implementations.*
 
