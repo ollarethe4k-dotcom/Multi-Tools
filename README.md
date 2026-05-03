@@ -5,7 +5,7 @@
   <img src="--/one.gif" alt="Multi-Tools Vibe" width="600">
 </p>
 
-# ⚠️ IMPORTANT NOTICES WINDOWS ONLY: This tool is designed exclusively for Windows 10 and 11.
+
 UNDER DEVELOPMENT (Beta): This tool is currently in active development. While core features are functional, users may encounter bugs or unexpected behavior.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
