@@ -55,7 +55,7 @@
 2. Run the script via terminal. Administrator elevation will be requested automatically if not already present.
 
 ```bash
-python Multi_Tools_11.py
+python Multi-Tools_v1.1.py
 ```
 
 
@@ -115,5 +115,5 @@ This project is distributed under the **MIT License**.
 Refer to the [LICENSE](LICENSE) file for detailed information.
 
 <div align="center">
-  <i>Multi-Tools v1.1</i>
+  <i>Multi-Tools_v1.1</i>
 </div>
