@@ -57,9 +57,7 @@
 python Multi_Tools_11.py
 ```
 
-### Navigation
-*   **Main Menu:** Access the HWID Spoofer module[cite: 2].
-*   Follow the on-screen prompts to select and modify specific identifiers[cite: 2].
+
 
 ---
 
