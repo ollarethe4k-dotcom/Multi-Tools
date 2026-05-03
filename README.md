@@ -30,6 +30,7 @@ Changing MAC addresses may briefly disrupt network connectivity.
 Altering system GUIDs can affect software licensing and activation.  
 
 Always create a system backup or restore point before proceeding.
+
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Features
 HWID Spoofer - Comprehensive modification of hardware identifiers:
