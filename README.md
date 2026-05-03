@@ -9,6 +9,7 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 💡 COLLABORATION & FEEDBACK
+
 We welcome suggestions! If you have ideas to improve the tool or encounter issues:
 
 Suggestions: We accept proposals for new hardware obfuscation features.
@@ -19,6 +20,7 @@ Code Contributions: Help us make "timestomping" or AV bypass procedures even mor
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ⚠️ DISCLAIMER
+
 This tool modifies system-level identifiers. Use at your own risk.
 
 Modifying disk IDs can prevent Windows from booting.  
@@ -31,6 +33,7 @@ Always create a system backup or restore point before proceeding.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Features
+
 HWID Spoofer - Comprehensive modification of hardware identifiers:
 
 Ethernet MAC Address Changer: Registry-level modification and adapter reset.  
@@ -45,6 +48,7 @@ SMBIOS UUID Override: Software-level system UUID masking.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Requirements
+
 Operating System: Windows 10/11.  
 
 Python: 3.7 or higher.  
@@ -55,6 +59,7 @@ PowerShell: 5.1 or higher.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Installation & Usage
+
 Download Multi_Tools_11.py.  
 
 Run the script via terminal (Administrator elevation will be requested automatically):  
@@ -66,6 +71,7 @@ Main Menu: Access the HWID Spoofer module.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Feature Details
+
 1. Ethernet MAC Changer
 Modifies the MAC address in the registry and cycles the adapter.
 
@@ -75,6 +81,7 @@ Note: The connection will drop for approximately 3-5 seconds during the reset.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 2. Disk ID Changer
+
 MBR: Modifies the 8-character hex signature.  
 
 GPT: Modifies the unique GUID.  
@@ -85,12 +92,14 @@ WARNING: Changing the ID of the C: drive is highly risky and may lead to "Inacce
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3. Security & Stealth
+
 Defender Exclusion: The tool automatically attempts to add its working directory and the Python executable to the Windows Defender exclusion list to prevent "Access Denied" errors during low-level writes.  
 
 Input Validation: All ID formats are validated before being written to the system.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Troubleshooting
+
 Disk remains "Offline" or "Missing"
 If a disk does not automatically reappear in File Explorer after a change:
 
@@ -102,12 +111,14 @@ Right-click the Disk Name and select Online.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Access Denied
+
 Even with the built-in exclusions, some third-party Antivirus software may block the script.
 
 Solution: Temporarily disable "Real-time Protection" or "Tamper Protection" during the operation. 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Version
+
 Multi-Tools v1.1 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
