@@ -16,6 +16,7 @@ Suggestions: We accept proposals for new hardware obfuscation features.
 
 Issue Reporting: If a function fails (e.g., a Disk ID remains offline), please report it so we can refine the error-handling logic.
 
+
 Code Contributions:
 
 We welcome contributions that improve the tool's technical depth. Specifically, we are looking for:
