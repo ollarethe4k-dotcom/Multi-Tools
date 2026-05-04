@@ -51,14 +51,26 @@
 
 ## 🚀 Installation & Usage
 
-1. Download the script to your local machine.
-2. Run the script via terminal. Administrator elevation will be requested automatically if not already present.
+Setup & Execution
+Download
 
-```bash
+Bash
+
+git clone https://github.com/ollarethe4k-dotcom/Multi-Tools.git
+cd Multi-Tools
+Check Python (3.7+)
+
+PowerShell
+
+python --version
+Run as Admin
+
+PowerShell
+
 python Multi-Tools_v1.1.py
-```
+[!IMPORTANT]
 
-
+UAC Prompt: The script will automatically request Admin privileges. Accept the prompt to allow hardware modifications.
 
 ---
 
