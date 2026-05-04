@@ -100,7 +100,7 @@ Modifies the MAC address in the registry and cycles the adapter.
 
 *   **Mechanism:** Takes the disk **Offline**, applies the new ID, and brings it back **Online** to force Windows to recognize the change.
 
-*   **WARNING:** Changing the ID of the `C:` drive is highly risky and may lead to "Inaccessible Boot Device" errors.
+*   **!WARNING!:** Changing the ID of the `C:` drive is highly risky and may lead to "Inaccessible Boot Device" errors.
 
 
 ### 3. Security & Stealth
