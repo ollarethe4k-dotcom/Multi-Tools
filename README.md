@@ -34,7 +34,7 @@
 
 ## ✨ Features
 
-**HWID Spoofer** - Comprehensive modification of hardware identifiers:
+> **HWID Spoofer** - Comprehensive modification of hardware identifiers:
 
 *   **🌐 Ethernet MAC Address Changer:** Registry-level modification and adapter reset.
 
