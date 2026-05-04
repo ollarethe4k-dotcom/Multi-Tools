@@ -55,11 +55,11 @@
 
 ```bash
 git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
-'''
+```
 
 ```bash
 cd Multi-Tools
-'''
+```
 
 ---
 
