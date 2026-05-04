@@ -132,7 +132,9 @@ If you encounter permission errors despite having admin rights, verify that **Ta
 
 ## 🤝 Collaboration & Contributions
 
-**We encourage community involvement to advance the project.** If you wish to propose new features, optimize existing modules, or report technical inconsistencies, please follow the standard contribution workflow:
+**We encourage community involvement to advance the project.** 
+
+If you wish to propose new features, optimize existing modules, or report technical inconsistencies, please follow the standard contribution workflow:
 
 </div>
 
