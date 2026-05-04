@@ -25,167 +25,118 @@
 
 ## ⚠️ Disclaimer
 
-> **This tool modifies system-level identifiers. Use at your own risk.**
+> **This tool modifies system-level identifiers and BIOS keys. Use at your own risk.**
 
-*   Modifying disk IDs can prevent Windows from booting.
+* Modifying **Disk IDs** can prevent Windows from booting if applied to the primary drive.
 
-*   Changing MAC addresses may briefly disrupt network connectivity.
+* **Linux MOK** setup involves enrolling keys into your BIOS/UEFI; you must follow the on-screen instructions during reboot.
 
-*   Altering system GUIDs can affect software licensing and activation.
+* Changing MAC addresses may briefly disrupt network connectivity during the adapter reset phase.
 
-*   **Always create a system backup or restore point before proceeding.**
+* **Always create a system restore point or a full backup before proceeding.**
 
 ---
 
-## ✨ Features
+## ✨ Features (v1.2)
 
-> **HWID Spoofer** - Comprehensive modification of hardware identifiers:
+### 🖥️ HWID Spoofer (Windows Only)
+Advanced hardware obfuscation through registry modifications and PowerShell automation:
 
-*   **🌐 Ethernet MAC Address Changer:** Registry-level modification and adapter reset.
+* **🌐 MAC Address Changer**: Modifies the physical address in the registry (`NetworkAddress`) and automatically restarts the Ethernet adapter.
 
-*   **🏷️ Hostname Changer:** Randomized or custom computer name updates.
+* **🏷️ Hostname Changer**: Updates the computer name using randomized strings or custom user input.
 
-*   **💾 Disk ID Modifier:** Supports both MBR Signatures and GPT GUIDs.
+* **💾 Disk ID Modifier**: Full support for **MBR Signatures** and **GPT GUIDs**, managing Offline/Online states to force system updates.
 
-*   **🔑 Machine GUID Spoofer:** Updates the Windows Cryptography GUID.
+* **🔑 Machine GUID Spoofer**: Generates and applies a new cryptographic `MachineGuid`.
 
-*   **💻 SMBIOS UUID Override:** Software-level system UUID masking.
+* **💻 SMBIOS UUID Override**: Masks the system UUID within the `HARDWARE\DESCRIPTION\System` registry hive.
+
+### 🐧 Linux MOK Integration
+
+Automation for Secure Boot management, ideal for researchers and dual-boot environments:
+
+* **🔐 Automated MOK Setup**: Automatically generates X.509 key pairs (`MOK.der`) and registers them via `mokutil`.
+
+* **📦 Distro Support**: Optimized scripts for **Debian/Ubuntu** (apt) and **Fedora/RHEL** (kmodgenca).
+
+* **🛡️ Secure Boot Helper**: Enables booting custom kernels while maintaining Secure Boot integrity.
 
 ---
 
 ## ⚙️ Requirements
 
-*   **Operating System:** Windows 10 / 11
+* **Operating Systems**: Windows 10/11 or Linux Distributions (Debian, Ubuntu, Fedora, RHEL).
 
-*   **Python:** 3.7 or higher
+* **Python**: Version 3.7 or higher.
 
-*   **PowerShell:** 5.1 or higher
-
-*   **Privileges:** Administrator rights *(automatically requested by the script)*
+* **Privileges**: 
+    * **Windows**: Administrator rights (automatically requested via `runas`).
+    * **Linux**: Root access required (`sudo`).
 
 ---
 
 ## 🚀 Installation & Usage
 
-1. **Clone the repository**
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
+    cd Multi-Tools
+    ```
 
-```bash
-git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
-```
+2.  **Run the script**:
 
-2. **Verify Python (3.7+)**
-
-```bash
-python --version
-```
-
-3. **Run the Script**
-
-```bash
-# Ensure you are inside the Multi-Tools folder
-python Multi-Tools_v1.1.py
-```
+    * **On Windows (PowerShell/CMD)**:
+        ```powershell
+        python Multi-Tools_v1.2.py
+        ```
+    * **On Linux (Terminal)**:
+        ```bash
+        sudo python3 Multi-Tools_v1.2.py
+        ```
 
 ---
 
-## 🔍 Feature Details
+## 🔍 Technical Details
 
-### 1. Ethernet MAC Changer
+### Stealth & Security
 
-Modifies the MAC address in the registry and cycles the adapter.
+* **Defender Exclusion**: The script automatically attempts to add its directory and the Python executable to the Windows Defender exclusion list using `Add-MpPreference`.
 
-*   **Logic:** Updates `HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}`.
+* **Input Validation**: Every identifier (MAC, GUID, Disk Signature) is strictly validated before being written to prevent registry corruption.
 
-*   **Note:** The network connection will drop for approximately 3-5 seconds during the reset phase.
+* **Power Automation**: Utilizes temporary `.ps1` scripts to bypass execution restrictions and apply deep network hardware changes.
 
-### 2. Disk ID Changer
+### Disk Management
 
-*   **MBR:** Modifies the 8-character hex signature.
+* The script identifies disks using `Get-Disk` and distinguishes between MBR (8-character hex) and GPT (Full GUID) partition styles.
 
-*   **GPT:** Modifies the unique GUID.
-
-*   **Mechanism:** Takes the disk **Offline**, applies the new ID, and brings it back **Online** to force Windows to recognize the change.
-
-*   **!WARNING!:** Changing the ID of the `C:` drive is highly risky and may lead to "Inaccessible Boot Device" errors.
-
-
-### 3. Security & Stealth
-
-*   **Defender Exclusion:** The tool automatically attempts to add its working directory and the Python executable to the Windows Defender exclusion list to prevent "Access Denied" errors during low-level writes.
-
-*   **Input Validation:** All ID formats are strictly validated before being written to the system.
-
-*   **Automated Defender Bypass:** The tool uses PowerShell `Add-MpPreference` commands to automatically whitelist the working directory and the Python interpreter.   This prevents the Real-Time Protection from blocking registry modifications and low-level hardware calls.
-
-*   **Privilege Escalation:** Admin rights are enforced to ensure the script can communicate with Windows Security settings and perform deep-system writes.
-
-*   **Input Validation:** All ID formats are strictly validated before being written to the system to avoid registry corruption.
+* It implements wait cycles (`Start-Sleep`) to ensure the OS correctly registers hardware state changes after toggling drives online.
 
 ---
 
 ## 🛠️ Troubleshooting
 
-### Disk remains "Offline" or "Missing"
+### Linux MOK Error
 
-If a disk does not automatically reappear in File Explorer after a change:
+If the `mokutil --import` command fails, ensure **Secure Boot** is enabled in your BIOS and that the password entered during the script is reused correctly in the MOKManager interface upon reboot.
 
-1. Open **Disk Management** (`diskmgmt.msc`).
+### Access Denied (Windows)
 
-2. Locate the disk (it will be marked as *Offline* with a black arrow).
-
-3. Right-click the Disk Name (e.g., *Disk 1*) and select **Online**.
-
-### Access Denied Errors
-
-Even with built-in exclusions, some third-party Antivirus software may aggressively block the script's low-level execution.
-
-*   **Solution:** Temporarily disable "Real-time Protection" or "Tamper Protection" during the operation.
+If you encounter permission errors despite having admin rights, verify that **Tamper Protection** in Windows Security is not blocking PowerShell calls to the registry.
 
 ---
 
-## 🤝 Collaboration & Code Contributions
+## 🤝 Collaboration & Roadmap
 
-**We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:**
-
-*   **Forensic Consistency:** Help us implement advanced *timestomping* techniques to maintain registry and file system consistency after ID modifications.
-
-*   **AV Compatibility:** Propose methods to refine dynamic exclusion logic.
-
-*   **Optimization:** Improve PowerShell execution speed to minimize the "offline" window for hardware devices.
-
-**Got a suggestion or found an issue?**
-
-*   **Suggestions:** We accept proposals for new hardware obfuscation features via Pull Requests.
-
-*   **Issue Reporting:** If a function fails (e.g., a Disk ID remains offline), please open an Issue so we can refine the error-handling logic.
-
----
-
-## 🗺️ Roadmap & Future Implementations
-
-**We are looking to expand the tool's capabilities beyond simple ID spoofing. Our current research is focused on:**
-
-### 🛡️ Automatic Secure Boot & TPM Emulation
-The biggest challenge for dual-boot users (Windows/Linux) is the mandatory Secure Boot requirement for games like *Warzone* on Windows 11. 
-* **Target:** Create a Kernel-Level driver to spoof the `SecureBoot` state to "Enabled" even when disabled in BIOS.
-* **TPM 2.0:** Developing a software-based TPM provider to satisfy system requirements without physical hardware constraints.
-
-### 🕵️ Advanced Stealth Features
-* **Kernel-Level Spoofing:** Moving from Registry/PowerShell methods to direct memory manipulation to hide from deeper Anti-Cheat scans.
-* **BaseBoard & Monitor Spoofing:** Adding serial modification for Motherboards and Display EDIDs.
-* **Firmware Consistency:** Ensuring that all spoofed IDs match across the Registry, WMI, and SMBIOS.
-
-> [!NOTE]
-> These features are currently in the **Research & Development** phase.
-> If you have experience with Windows Driver Development (WDM) or UEFI hooking, feel free to open a PR!
+We are looking for contributors to expand the tool's technical capabilities:
 
 ---
 
 ## 📜 License
 
-This project is distributed under the **MIT License**.
-Refer to the [LICENSE](LICENSE) file for detailed information.
+This project is distributed under the **MIT License**. See the `LICENSE` file for more details.
 
 <div align="center">
-  <i>Multi-Tools_v1.1</i>
-</div>
+  <i>Multi-Tools v1.2 - Hardware & Kernel Utility</i>
+</div
