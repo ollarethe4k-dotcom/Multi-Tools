@@ -86,7 +86,7 @@ python Multi-Tools_v1.1.py
 
 ### 1. Ethernet MAC Changer
 
-Modifies the MAC address in the registry and cycles the adapter.
+> **Modifies the MAC address in the registry and cycles the adapter.**
 
 *   **Logic:** Updates `HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}`.
 
@@ -139,7 +139,7 @@ Even with built-in exclusions, some third-party Antivirus software may aggressiv
 
 ## 🤝 Collaboration & Code Contributions
 
-We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:
+> **We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:**
 
 *   **Forensic Consistency:** Help us implement advanced *timestomping* techniques to maintain registry and file system consistency after ID modifications.
 
