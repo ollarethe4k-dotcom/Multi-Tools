@@ -64,22 +64,40 @@ Automation for Secure Boot management, ideal for researchers and dual-boot envir
 
 ## 🚀 Installation & Usage
 
-1. **Clone the repository:**
-    ```bash
-    git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
-    cd Multi-Tools
-    ```
+### Prerequisites
+Verify Python 3.7+ is installed:
+- **Windows**: Run `python --version` or `py --version` in terminal
+- **Linux**: Run `python3 --version` in terminal
+If missing, install from [python.org](https://www.python.org/downloads/) (Windows: check "Add Python to PATH" during install).
 
-2. **Run the script:**
+### 1. Clone the repository
 
-    * **Windows (Admin Terminal):**
-        ```powershell
-        python Multi-Tools_v1.2.py
-        ```
-    * **Linux (Terminal):**
-        ```bash
-        sudo python3 Multi-Tools_v1.2.py
-        ```
+```bash
+git clone https://github.com/ollarethe4k-dotcom/Multi-Tools.git
+```
+```bash
+cd Multi-Tools
+```
+
+### 2. Run the script
+
+Windows (Administrator terminal):
+
+```bash
+python Multi-Tools_v1.2.py
+```
+ 
+Or use Python launcher if above fails:
+  
+```bash
+py Multi-Tools_v1.2.py
+```
+
+ 
+Linux (root privileges):
+```bash
+sudo python3 Multi-Tools_v1.2.py
+```
 
 ---
 
