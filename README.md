@@ -88,11 +88,11 @@ Automation for Secure Boot management, ideal for researchers and dual-boot envir
 
 2.  **Run the script:**
 
-    * **Windows (Admin Terminal):
+    * **Windows (Admin Terminal):**
         ```powershell
         python Multi-Tools_v1.2.py
         ```
-    * **Linux (Terminal):
+    * **Linux (Terminal):**
         ```bash
         sudo python3 Multi-Tools_v1.2.py
         ```
