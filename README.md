@@ -57,8 +57,16 @@
 git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
 ```
 
+2. **Verify Python (3.7+)**
+
 ```bash
-cd Multi-Tools
+python --version
+```
+3. **Run the Script**
+
+```bash
+# Ensure you are inside the Multi-Tools folder
+python Multi-Tools_v1.1.py
 ```
 
 ---
