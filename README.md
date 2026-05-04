@@ -2,12 +2,16 @@
 
 # 🛠️ Multi-Tools: HWID Spoofer & System Utilities
 
+[![Static Badge](https://img.shields.io/badge/Security-Hardware_Obfuscation-black?style=for-the-badge&logo=target)]()
+[![Static Badge](https://img.shields.io/badge/OS-Windows_10_|_11-0078D6?style=for-the-badge&logo=windows)]()
+[![Static Badge](https://img.shields.io/badge/Python-3.7+-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
+[![Static Badge](https://img.shields.io/badge/Stage-Beta-FF8C00?style=for-the-badge&logo=rocket)]()
+[![Static Badge](https://img.shields.io/badge/License-MIT-success?style=for-the-badge&logo=opensourceinitiative&logoColor=white)]()
 [![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/blackhat.emi)
-![OS: Windows 10/11](https://img.shields.io/badge/OS-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows&logoColor=white)
-![Python: 3.7+](https://img.shields.io/badge/Python-3.7+-3776AB?style=flat-square&logo=python&logoColor=white)
-![Stage: Beta](https://img.shields.io/badge/Stage-Beta-FF8C00?style=flat-square)
-![License: MIT](https://img.shields.io/badge/License-MIT-success?style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/ollarethe4k-dotcom/Multi-Tools?style=social)
+![GitHub last commit](https://img.shields.io/github/last-commit/ollarethe4k-dotcom/Multi-Tools?style=flat-square&color=blue)
+
+</div>
 
 <p align="center">
 
