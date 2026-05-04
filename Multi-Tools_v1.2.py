@@ -71,6 +71,15 @@ def warning(msg):
 def note(msg):
     print('NOTE: ' + str(msg))
 
+def backup(module, original, new):
+    backup_path = os.path.join(os.path.expanduser('~'), 'Desktop', 'Multi-Tools_Backup.txt')
+    timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+    try:
+        with open(backup_path, 'a') as f:
+            f.write(f"[{timestamp}] {module}\nOriginal: {original}\nNew: {new}\n" + "-"*50 + "\n")
+    except:
+        pass
+
 def pause():
     input('\nPress Enter to continue...')
 
@@ -174,10 +183,15 @@ def mac_changer():
                 name = adapters[idx].split(' - ')[0]
                 old = get_mac_addr(name)
                 new = gen_mac()
+                if not validate_mac(new):
+                    error('Generated invalid MAC, retrying...')
+                    time.sleep(1)
+                    continue
                 header('CHANGE MAC')
                 print('Adapter:', adapters[idx])
                 print('Old:', old)
                 print('New:', new)
+                backup('MAC Address', old, new)
                 if input('\nApply? (y/n): ').lower() == 'y':
                     if set_mac(name, new):
                         success('MAC changed!')
@@ -202,6 +216,17 @@ def gen_mac():
     m = [random.randint(0, 255) for _ in range(6)]
     m[0] = (m[0] & 0xFE) | 0x02
     return ':'.join('{:02X}'.format(x) for x in m)
+
+def validate_mac(mac):
+    clean = mac.replace(':', '').replace('-', '').upper()
+    if len(clean) != 12:
+        return False
+    if not all(c in '0123456789ABCDEF' for c in clean):
+        return False
+    first_byte = int(clean[:2], 16)
+    if first_byte & 0x01:
+        return False
+    return True
 
 def set_mac(name, mac):
     clean = mac.replace(':', '')
@@ -253,70 +278,14 @@ def hostname_spoofer():
                 if input('\nApply? (y/n): ').lower() == 'y':
                     esc = name.replace("'", "''")
                     _, err, rc = run_cmd("powershell -C \"Rename-Computer -New '" + esc + "' -Force\"")
-                    if rc == 0:
-                        success('Hostname changed!')
-                        break
-                    else:
-                        error(err)
-                        pause()
+                if rc == 0:
+                    success('UUID override applied! Reboot required.')
+                    break
+                else:
+                    error(err)
+                    pause()
         elif c == '0':
             break
-
-def disk_changer():
-    while True:
-        header('DISK ID CHANGER')
-        disks = get_disks()
-        if not disks:
-            print('No disks found')
-            pause()
-            break
-        print('{:<3} {:<25} {:<6} {:<15} {}'.format('ID', 'Model', 'Type', 'Letters', 'ID'))
-        print('-' * 85)
-        for i, d in enumerate(disks, 1):
-            cur = d['sig'] if d['style'] == 'MBR' else d['guid']
-            lett = '[' + d['letters'] + ']'
-            print('{:<3} {:<25} {:<6} {:<15} {}'.format(str(i), d['name'][:24], d['style'], lett, cur))
-        print()
-        print(red('0. BACK'))
-        print()
-        c = input('Choice: ')
-        if c == '0':
-            break
-        try:
-            idx = int(c) - 1
-            if 0 <= idx < len(disks):
-                d = disks[idx]
-                header('CHANGE DISK ID')
-                print('Disk: {} [{}]'.format(d['name'], d['letters']))
-                cur = d['sig'] if d['style'] == 'MBR' else d['guid']
-                print('Current:', cur)
-                new = ''.join(random.choices('0123456789ABCDEF', k=8)) if d['style'] == 'MBR' else gen_guid()
-                print('New:', new)
-                if input('\nApply? (y/n): ').lower() == 'y':
-                    if d['style'] == 'MBR':
-                        _, err, rc = run_cmd("powershell -C \"Set-Disk -Number " + str(d['num']) + " -Signature 0x" + new + '"')
-                    else:
-                        rc, err = set_disk_guid(d['num'], new)
-                    if rc == 0:
-                        success('Disk ID changed!')
-                        break
-                    else:
-                        error(err)
-                        pause()
-            else:
-                print(red('Invalid number'))
-                time.sleep(0.5)
-        except:
-            print(red('Invalid input'))
-            time.sleep(0.5)
-
-def set_disk_guid(num, guid):
-    clean = guid.strip('{}')
-    ps = "$d=Get-Disk " + str(num) + ";$d|Set-Disk -Offline:$true -Confirm:$false;Start-Sleep 2;$d|Set-Disk -Guid '" + clean + "';Start-Sleep 1;$d|Set-Disk -Offline:$false -Confirm:$false;Write 'OK'"
-    out, err, rc = run_cmd('powershell -C "' + ps + '"')
-    if rc == 0 and 'OK' in out:
-        return 0, ''
-    return rc, err or out
 
 def mgid_spoofer():
     while True:
@@ -331,6 +300,7 @@ def mgid_spoofer():
         c = input('Choice: ')
         if c == '1':
             new = gen_guid()
+            print('New:', new)
             if input('\nApply? (y/n): ').lower() == 'y':
                 _, err, rc = run_cmd("powershell -C \"Set-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Cryptography' MachineGuid '" + new + "' -Force\"")
                 if rc == 0:
@@ -355,8 +325,9 @@ def uuid_spoofer():
         c = input('Choice: ')
         if c == '1':
             new = gen_guid()
+            print('New:', new)
             if input('\nApply? (y/n): ').lower() == 'y':
-                ps = "$p='HKLM:\\HARDWARE\\DESCRIPTION\\System';if(-not(Test-Path $p)){New-Item $p -F|Out-Null};Set-ItemProperty $p SystemUuid '" + new + "' -Type String -Force"
+                ps = "$p='HKLM:\\SYSTEM\\CurrentControlSet\\Control\\SystemInformation';if(-not(Test-Path $p)){New-Item $p -F|Out-Null};Set-ItemProperty $p SystemUUID '" + new + "' -Type String -Force"
                 _, err, rc = run_cmd('powershell -C "' + ps + '"')
                 if rc == 0:
                     success('UUID override applied!')
