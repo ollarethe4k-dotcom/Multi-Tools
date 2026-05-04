@@ -25,7 +25,8 @@
 
 ## ⚠️ Disclaimer
 
-> **This tool modifies system-level identifiers and BIOS keys. Use at your own risk.**
+> **This tool modifies system-level identifiers and BIOS keys. 
+Use at your own risk.**
 
 * Modifying **Disk IDs** can prevent Windows from booting if applied to the primary drive.
 
