@@ -51,12 +51,16 @@
 
 ## 🚀 Installation & Usage
 
-Setup & Execution
+Ecco la versione definitiva con i blocchi di codice (i "triple backticks" ```) pronti per essere incollati nel tuo file README.md su GitHub:
+
+🛠️ Setup & Execution
 Download
 
-Bash
 
-git clone https://github.com/ollarethe4k-dotcom/Multi-Tools.git
+\```bash
+git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
+\```
+
 cd Multi-Tools
 Check Python (3.7+)
 
@@ -68,8 +72,8 @@ Run as Admin
 PowerShell
 
 python Multi-Tools_v1.1.py
-[!IMPORTANT]
 
+[!IMPORTANT]
 UAC Prompt: The script will automatically request Admin privileges. Accept the prompt to allow hardware modifications.
 
 ---
