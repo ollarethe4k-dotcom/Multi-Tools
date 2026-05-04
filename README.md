@@ -171,8 +171,6 @@ If you wish to propose new features, optimize existing modules, or report techni
 ### 💡 Feedback & Technical Support
 For bug reports or architectural suggestions, please open a formal **Issue** or start a **Discussion**.  
 
-*Collaborate with us to develop the most comprehensive system utility and security research toolkit.*
-
 ---
 
 ## 📜 License
