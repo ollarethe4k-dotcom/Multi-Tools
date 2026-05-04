@@ -88,11 +88,11 @@ Automation for Secure Boot management, ideal for researchers and dual-boot envir
 
 2.  **Run the script:**
 
-    * **Windows (Admin Terminal):**
+    * **Windows (Admin Terminal):
         ```powershell
         python Multi-Tools_v1.2.py
         ```
-    * **Linux (Terminal):**
+    * **Linux (Terminal):
         ```bash
         sudo python3 Multi-Tools_v1.2.py
         ```
@@ -139,5 +139,5 @@ We are looking for contributors to expand the tool's technical capabilities:
 This project is distributed under the **MIT License**. See the `LICENSE` file for more details.
 
 <div align="center">
-  <i>Multi-Tools v1.2 - Hardware & Kernel Utility</i>
+  <i>Multi-Tools v1.2</i>
 </div
