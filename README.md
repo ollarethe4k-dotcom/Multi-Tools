@@ -86,7 +86,7 @@ python Multi-Tools_v1.1.py
 
 ### 1. Ethernet MAC Changer
 
-> **Modifies the MAC address in the registry and cycles the adapter.**
+Modifies the MAC address in the registry and cycles the adapter.
 
 *   **Logic:** Updates `HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972-e325-11ce-bfc1-08002be10318}`.
 
