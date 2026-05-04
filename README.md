@@ -2,7 +2,7 @@
 
 # 🛠️ Multi-Tools: HWID Spoofer & System Utilities
 
-[![Static Badge](https://img.shields.io/badge/OS-Windows_10_|_11-0078D6?style=for-the-badge&logo=windows)]()
+[![Static Badge](https://img.shields.io/badge/Target_OS-Windows%20%7C%20Linux-0078D6?style=for-the-badge&logo=gnumetadatacleaner&logoColor=white)]()
 [![Static Badge](https://img.shields.io/badge/Python-3.7+-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
 [![Static Badge](https://img.shields.io/badge/Stage-Beta-FF8C00?style=for-the-badge&logo=rocket)]()
 [![Static Badge](https://img.shields.io/badge/License-MIT-success?style=for-the-badge&logo=opensourceinitiative&logoColor=white)]()
