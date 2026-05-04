@@ -4,7 +4,6 @@
 
 [![Static Badge](https://img.shields.io/badge/Target_OS-Windows%20%7C%20Linux-0078D6?style=for-the-badge&logo=gnumetadatacleaner&logoColor=white)]()
 [![Static Badge](https://img.shields.io/badge/Python-3.7+-3776AB?style=for-the-badge&logo=python&logoColor=white)]()
-[![Static Badge](https://img.shields.io/badge/Stage-Beta-FF8C00?style=for-the-badge&logo=rocket)]()
 [![Static Badge](https://img.shields.io/badge/License-MIT-success?style=for-the-badge&logo=opensourceinitiative&logoColor=white)]()
 ![GitHub stars](https://img.shields.io/github/stars/ollarethe4k-dotcom/Multi-Tools?style=social)
 ![GitHub last commit](https://img.shields.io/github/last-commit/ollarethe4k-dotcom/Multi-Tools?style=flat-square&color=blue)
