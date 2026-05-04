@@ -73,6 +73,7 @@ git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github
 ```bash
 python --version
 ```
+
 3. **Run the Script**
 
 ```bash
@@ -139,7 +140,7 @@ Even with built-in exclusions, some third-party Antivirus software may aggressiv
 
 ## 🤝 Collaboration & Code Contributions
 
-> **We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:**
+**We are in active development and welcome contributions that improve the tool's technical depth. Specifically, we are looking for:**
 
 *   **Forensic Consistency:** Help us implement advanced *timestomping* techniques to maintain registry and file system consistency after ID modifications.
 
