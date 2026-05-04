@@ -86,11 +86,15 @@ Modifies the MAC address in the registry and cycles the adapter.
 
 
 ### 3. Security & Stealth
+
 *   **Defender Exclusion:** The tool automatically attempts to add its working directory and the Python executable to the Windows Defender exclusion list to prevent "Access Denied" errors during low-level writes.
+
 *   **Input Validation:** All ID formats are strictly validated before being written to the system.
-*   **Automated Defender Bypass:** The tool uses PowerShell `Add-MpPreference` commands to automatically whitelist the working directory and the Python interpreter.
-*   This prevents the Real-Time Protection from blocking registry modifications and low-level hardware calls.
+
+*   **Automated Defender Bypass:** The tool uses PowerShell `Add-MpPreference` commands to automatically whitelist the working directory and the Python interpreter.   This prevents the Real-Time Protection from blocking registry modifications and low-level hardware calls.
+
 *   **Privilege Escalation:** Admin rights are enforced to ensure the script can communicate with Windows Security settings and perform deep-system writes.
+
 *   **Input Validation:** All ID formats are strictly validated before being written to the system to avoid registry corruption.
 
 ---
