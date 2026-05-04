@@ -66,7 +66,8 @@ Automation for Secure Boot management, ideal for researchers and dual-boot envir
 Verify Python 3.7+ is installed:
 - **Windows**: Run `python --version` or `py --version` in terminal
 - **Linux**: Run `python3 --version` in terminal
-If missing, install from [python.org](https://www.python.org/downloads/) (Windows: check "Add Python to PATH" during install).
+If missing, install from [python.org](https://www.python.org/downloads/)
+(Windows: check "Add Python to PATH" during install).
 
 ### 1. Clone the repository
 
