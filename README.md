@@ -7,6 +7,7 @@
 ![Python: 3.7+](https://img.shields.io/badge/Python-3.7+-3776AB?style=flat-square&logo=python&logoColor=white)
 ![Stage: Beta](https://img.shields.io/badge/Stage-Beta-FF8C00?style=flat-square)
 ![License: MIT](https://img.shields.io/badge/License-MIT-success?style=flat-square)
+![GitHub stars](https://img.shields.io/github/stars/ollarethe4k-dotcom/Multi-Tools?style=social)
 
 <p align="center">
 
@@ -153,6 +154,26 @@ Even with built-in exclusions, some third-party Antivirus software may aggressiv
 *   **Suggestions:** We accept proposals for new hardware obfuscation features via Pull Requests.
 
 *   **Issue Reporting:** If a function fails (e.g., a Disk ID remains offline), please open an Issue so we can refine the error-handling logic.
+
+---
+
+## 🗺️ Roadmap & Future Implementations
+
+**We are looking to expand the tool's capabilities beyond simple ID spoofing. Our current research is focused on:**
+
+### 🛡️ Automatic Secure Boot & TPM Emulation
+The biggest challenge for dual-boot users (Windows/Linux) is the mandatory Secure Boot requirement for games like *Warzone* on Windows 11. 
+* **Target:** Create a Kernel-Level driver to spoof the `SecureBoot` state to "Enabled" even when disabled in BIOS.
+* **TPM 2.0:** Developing a software-based TPM provider to satisfy system requirements without physical hardware constraints.
+
+### 🕵️ Advanced Stealth Features
+* **Kernel-Level Spoofing:** Moving from Registry/PowerShell methods to direct memory manipulation to hide from deeper Anti-Cheat scans.
+* **BaseBoard & Monitor Spoofing:** Adding serial modification for Motherboards and Display EDIDs.
+* **Firmware Consistency:** Ensuring that all spoofed IDs match across the Registry, WMI, and SMBIOS.
+
+> [!NOTE]
+> These features are currently in the **Research & Development** phase.
+> If you have experience with Windows Driver Development (WDM) or UEFI hooking, feel free to open a PR!
 
 ---
 
