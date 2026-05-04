@@ -19,153 +19,253 @@
 
 ## ⚠️ Disclaimer
 
-> This tool modifies system-level identifiers and BIOS keys. 
-> Use at your own risk.
+> **This tool modifies system-level identifiers. Use at your own risk.**
 
-* Modifying **Disk IDs** can prevent Windows from booting if applied to the primary drive.
-* **Linux MOK** setup involves enrolling keys into your BIOS/UEFI; you must follow the on-screen instructions during reboot.
-* Changing MAC addresses may briefly disrupt network connectivity during the adapter reset phase.
-* **Always create a system restore point or a full backup before proceeding.**
+- Modifying **Disk IDs** can prevent Windows from booting if applied to the primary drive
+- **Linux MOK** setup involves enrolling keys into your BIOS/UEFI; follow on-screen instructions during reboot
+- Changing MAC addresses may briefly disrupt network connectivity during adapter reset
+- **All changes are automatically logged** to `Multi-Tools_Backup.txt` on your Desktop
+- **Always create a system restore point or full backup before proceeding**
 
 ---
 
-## ✨ Features (v1.2)
+## ✨ What's New in v1.3
+
+### 🆕 Major Improvements
+- **Dual Method Disk ID**: Now uses PowerShell `Set-Disk` with `Diskpart` fallback for better compatibility
+- **Auto Backup System**: All critical changes (MAC, Disk ID, Machine GUID) logged with timestamps
+- **MAC Validation**: Prevents invalid MAC addresses from being applied
+- **Cross-Platform Detection**: Run on Windows to get Linux instructions, or directly on Linux for automation
+- **Improved Error Handling**: Detailed error messages and troubleshooting hints
+
+---
+
+## 📋 Features
 
 ### 🖥️ HWID Spoofer (Windows Only)
 Advanced hardware obfuscation through registry modifications and PowerShell automation:
 
-* **🌐 MAC Address Changer**: Modifies the physical address in the registry (`NetworkAddress`) and automatically restarts the Ethernet adapter.
-* **🏷️ Hostname Changer**: Updates the computer name using randomized strings or custom user input.
-* **💾 Disk ID Modifier**: Full support for **MBR Signatures** and **GPT GUIDs**, managing Offline/Online states to force system updates.
-* **🔑 Machine GUID Spoofer**: Generates and applies a new cryptographic `MachineGuid`.
-* **💻 SMBIOS UUID Override**: Masks the system UUID within the `HARDWARE\DESCRIPTION\System` registry hive.
+| Feature | Description |
+|---------|-------------|
+| 🌐 **MAC Address Changer** | Modifies registry (`NetworkAddress`) and restarts Ethernet adapter automatically |
+| 🏷️ **Hostname Changer** | Updates computer name with randomized strings or custom input |
+| 💾 **Disk ID Modifier** | Dual method (PowerShell + Diskpart) for MBR Signatures and GPT GUIDs |
+| 🔑 **Machine GUID Spoofer** | Generates and applies new cryptographic `MachineGuid` in registry |
+| 💻 **SMBIOS UUID Override** | Masks system UUID in `HARDWARE\DESCRIPTION\System` registry hive |
 
-### 🐧 Linux MOK Integration
-
+### 🐧 Linux MOK Integration (Cross-Platform)
 Automation for Secure Boot management, ideal for researchers and dual-boot environments:
 
-* **🔐 Automated MOK Setup**: Automatically generates X.509 key pairs (`MOK.der`) and registers them via `mokutil`.
-* **📦 Distro Support**: Automated scripts for Debian/Ubuntu/Kali (apt), Fedora/RHEL (dnf), and Arch Linux (pacman).
-* **🛡️ Secure Boot Helper**: Enables booting custom kernels while maintaining Secure Boot integrity.
+| Feature | Description |
+|---------|-------------|
+| 🔐 **Automated MOK Setup** | Generates X.509 key pairs and registers via `mokutil` |
+| 📦 **Distro Support** | Debian/Ubuntu/Kali (apt), Fedora/RHEL (dnf), Arch Linux (pacman) |
+| 🛡️ **Secure Boot Helper** | Enables custom kernels while maintaining Secure Boot integrity |
+| 💻 **Cross-Platform** | Run on Windows to get instructions, or directly on Linux for full automation |
 
 ---
 
 ## ⚙️ Requirements
 
-* **Operating Systems**: Windows 10/11 or Linux Distributions (Debian, Ubuntu, Fedora, RHEL).
-* **Python**: Version 3.7 or higher.
-* **Privileges**: 
-    * **Windows**: Administrator rights (automatically requested via `runas`).
-    * **Linux**: Root access required (`sudo`).
+### Operating Systems
+- **Windows**: 10/11 (Administrator rights required)
+- **Linux**: Debian, Ubuntu, Kali, Fedora, RHEL, Arch (Root access required)
+
+### Software
+- **Python**: Version 3.7 or higher
+- **Windows**: PowerShell 5.1+ (included by default)
+- **Linux**: `mokutil`, `openssl`, `sbsigntool` (auto-installed by script)
 
 ---
 
 ## 🚀 Installation & Usage
 
-### Prerequisites
+### Step 0: Check Python
 Verify Python 3.7+ is installed:
-- **Windows**: Run `python --version` or `py --version` in terminal
-- **Linux**: Run `python3 --version` in terminal
-If missing, install from [python.org](https://www.python.org/downloads/)
-(Windows: check "Add Python to PATH" during install).
 
-### 1. Clone the repository
-
+**Windows:**
 ```bash
-git clone https://github.com/ollarethe4k-dotcom/Multi-Tools.git
+python --version
 ```
+or
 ```bash
-cd Multi-Tools
+py --version
 ```
 
-### 2. Run the script
-
-Windows (Administrator terminal):
-
+**Linux:**
 ```bash
-python Multi-Tools_v1.2.py
-```
- 
-Or use Python launcher if above fails:
-  
-```bash
-py Multi-Tools_v1.2.py
+python3 --version
 ```
 
- 
-Linux (root privileges):
-```bash
-sudo python3 Multi-Tools_v1.2.py
-```
+If missing, download from [python.org](https://www.python.org/downloads/)  
+*Windows: Check "Add Python to PATH" during install*
 
 ---
 
-## 🔍 Technical Details
+### 🪟 WINDOWS INSTALLATION
 
-### Stealth & Security
+#### Step 1: Download the Script
+Clone the repository:
+```bash
+git clone https://github.com/ollarethe4k-dotcom/Multi-Tools.git
+cd Multi-Tools
+```
 
-* **Defender Exclusion**: The script automatically attempts to add its directory and the Python executable to the Windows Defender exclusion list using `Add-MpPreference`.
-* **Input Validation**: Every identifier (MAC, GUID, Disk Signature) is strictly validated before being written to prevent registry corruption.
-* **Power Automation**: Utilizes temporary `.ps1` scripts to bypass execution restrictions and apply deep network hardware changes.
+Or download `Multi-Tools_v1.3.py` to any folder.
 
-### Disk Management
+#### Step 2: Run the Script
+Double-click the file **or** run from terminal (Administrator auto-requested):
 
-* The script identifies disks using `Get-Disk` and distinguishes between MBR (8-character hex) and GPT (Full GUID) partition styles.
-* It implements wait cycles (`Start-Sleep`) to ensure the OS correctly registers hardware state changes after toggling drives online.
+```bash
+python Multi-Tools_v1.3.py
+```
+
+If that fails, try:
+```bash
+py Multi-Tools_v1.3.py
+```
+
+**What happens on first run:**
+1. Script requests Administrator privileges (auto-elevates)
+2. Adds Defender exclusions for the script folder and Python
+3. Shows the main menu
+
+#### Step 3: Use the Tools
+- Select **1** for HWID Spoofer (Windows only)
+- Select **2** for Linux MOK Setup (shows instructions)
+
+---
+
+### 🐧 LINUX INSTALLATION
+
+#### Step 1: Copy the Script
+Copy `Multi-Tools_v1.3.py` to your Linux system (USB drive, download, etc.)
+
+#### Step 2: Run with Root Privileges
+```bash
+sudo python3 Multi-Tools_v1.3.py
+```
+
+**What happens on first run:**
+1. Script detects your Linux distribution
+2. Auto-installs required packages (`mokutil`, `openssl`, etc.)
+3. Generates MOK key pair
+4. Guides you through BIOS enrollment
+
+#### Step 3: Complete MOK Setup
+After running the script:
+1. **Reboot** your PC
+2. In the blue **MOKManager** screen, select "Enroll MOK"
+3. Enter the password you set during script run
+4. Reboot again
+
+---
+
+## 🔍 How It Works
+
+### HWID Spoofer (Windows)
+```
+Registry Modifications:
+├── MAC Address → HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e972...}
+├── Hostname → Through PowerShell Rename-Computer
+├── Disk ID → PowerShell Set-Disk OR Diskpart (fallback)
+├── Machine GUID → HKLM\SOFTWARE\Microsoft\Cryptography
+└── SMBIOS UUID → HKLM\HARDWARE\DESCRIPTION\System
+```
+
+### Linux MOK Setup
+```
+Distribution Detection:
+├── Debian/Ubuntu/Kali → apt install mokutil sbsigntool openssl
+├── Fedora/RHEL → dnf install mokutil openssl + kmodgenca
+└── Arch Linux → pacman -S mokutil sbsigntool openssl
+
+Key Generation:
+├── Private Key → MOK.priv
+└── Public Key → MOK.der → mokutil --import
+```
+
+### Auto Backup System
+All changes logged to: `C:\Users\[YourUser]\Desktop\Multi-Tools_Backup.txt`
+```
+Format:
+[2026-05-04 16:30:00] MAC Address
+Original: 00-11-22-33-44-55
+New: 02-11-22-33-44-66
+--------------------------------------------------
+```
 
 ---
 
 ## 🛠️ Troubleshooting
 
-### Linux MOK Error
+### ❌ "Access Denied" (Windows)
+**Solution:**
+1. Ensure you're running as Administrator (script auto-requests, but check)
+2. Disable **Tamper Protection** in Windows Security → Virus & Threat Protection → Manage Settings
+3. Temporarily disable third-party antivirus
+4. Check if Windows is protecting the disk (BitLocker, etc.)
 
-If the `mokutil --import` command fails, ensure **Secure Boot** is enabled in your BIOS and that the password entered during the script is reused correctly in the MOKManager interface upon reboot.
+### ❌ Disk ID Change Failed (v1.3)
+**The script uses dual method (PowerShell + Diskpart fallback)**
 
-### Access Denied (Windows)
+**Solutions:**
+- Ensure the disk doesn't have volumes in use (pagefile, system files)
+- Try unmounting volumes first
+- Check if Windows is protecting the disk
+- Review detailed error output shown by the script
+- Try on a non-system disk first
 
-If you encounter permission errors despite having admin rights, verify that **Tamper Protection** in Windows Security is not blocking PowerShell calls to the registry.
+### ❌ Linux MOK Import Fails
+**Solution:**
+1. Ensure **Secure Boot** is enabled in BIOS
+2. Reboot and enter BIOS/UEFI settings
+3. Set "Secure Boot" to "Enabled" or "Custom"
+4. Run script again and set a simple password (e.g., "12345678")
+5. During MOKManager, use the **same password**
 
----
-
-<div align="center">
-
-## 🤝 Collaboration & Contributions
-
-**We encourage community involvement to advance the project.** 
-
-</div>
-
-1. **Fork the Repository**: Create a personal copy of the project by clicking the `Fork` button.
-2. **Branch Management**: Create a dedicated branch for your feature (`git checkout -b feature/AdvancedModule`).
-3. **Code Quality**: Ensure your code is production-ready and follows the existing logic structure.
-4. **Submission**: Push your changes and open a **Pull Request** for technical review.
-
----
-
-<div align="center">
-
-## 🗺️ Future Roadmap & Implementation Goals
-
-</div>
-
-1. **💾 Kernel-Level Integration**: Shifting from registry-based modification to WDM drivers to manage hardware identifiers at Ring-0, ensuring persistence against deep-system scans.
-2. **🕰️ Forensic Integrity (Timestomping)**: Development of logic to restore original registry "Last Write Time" timestamps, maintaining system consistency and preventing forensic detection.
-3. **🛡️ Anti-Virtualization Modules**: Implementation of advanced techniques to mitigate environment detection (VMware/VirtualBox) for researchers operating within virtualized sandboxes.
-4. **🖥️ Display & Peripheral Obfuscation**: Expanding the toolkit to include Monitor EDID masking and USB Serial Descriptor randomization for HID and storage devices.
+### ❌ Python Not Found
+**Windows:** Reinstall Python with "Add Python to PATH" checked  
+**Linux:** `sudo apt install python3` / `sudo dnf install python3` / `sudo pacman -S python`
 
 ---
 
-<div align="center">
+## 🤝 Contributing
 
-### 💡 Feedback & Technical Support
-For bug reports or architectural suggestions, please open a formal **Issue** or start a **Discussion**.  
+We encourage community involvement!
+
+1. **Fork** the repository
+2. **Branch**: `git checkout -b feature/YourFeature`
+3. **Code**: Follow existing logic and style
+4. **Test**: Ensure it works on your system
+5. **Submit**: Open a Pull Request
+
+---
+
+## 🗺️ Future Roadmap
+
+1. **💾 Kernel-Level Integration**: Ring-0 WDM drivers for persistence against deep-system scans
+2. **🕰️ Forensic Integrity**: Restore registry "Last Write Time" timestamps (timestomping)
+3. **🛡️ Anti-Virtualization**: Mitigate VMware/VirtualBox detection for sandbox research
+4. **🖥️ Display & Peripheral**: Monitor EDID masking and USB Serial Descriptor randomization
+
+---
+
+## 💡 Support
+
+- **Bug Reports**: Open an [Issue](https://github.com/ollarethe4k-dotcom/Multi-Tools/issues)
+- **Discussions**: Start a [Discussion](https://github.com/ollarethe4k-dotcom/Multi-Tools/discussions)
+- **Contributions**: Submit a Pull Request
 
 ---
 
 ## 📜 License
 
-This project is distributed under the **MIT License**. See the `LICENSE` file for more details.
+This project is distributed under the **MIT License**.  
+See the `LICENSE` file for more details.
+
+---
 
 <div align="center">
-  <i>Multi-Tools v1.2</i>
+  <b>Multi-Tools v1.3</b><br>
 </div>
