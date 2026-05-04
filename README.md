@@ -45,7 +45,7 @@ Advanced hardware obfuscation through registry modifications and PowerShell auto
 Automation for Secure Boot management, ideal for researchers and dual-boot environments:
 
 * **🔐 Automated MOK Setup**: Automatically generates X.509 key pairs (`MOK.der`) and registers them via `mokutil`.
-* **📦 Distro Support**: Optimized scripts for **Debian/Ubuntu** (apt) and **Fedora/RHEL** (kmodgenca).
+* **📦 Distro Support**: Automated scripts for Debian/Ubuntu/Kali (apt), Fedora/RHEL (dnf), and Arch Linux (pacman).
 * **🛡️ Secure Boot Helper**: Enables booting custom kernels while maintaining Secure Boot integrity.
 
 ---
