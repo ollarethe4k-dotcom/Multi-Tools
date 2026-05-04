@@ -78,24 +78,24 @@ Automation for Secure Boot management, ideal for researchers and dual-boot envir
 
 ## 🚀 Installation & Usage
 
-1.  **Clone the repository**:
-    
-```bash
+</div>
+
+1.  **Clone the repository:**
+    ```bash
     git clone [https://github.com/ollarethe4k-dotcom/Multi-Tools.git](https://github.com/ollarethe4k-dotcom/Multi-Tools.git)
     cd Multi-Tools
     ```
 
-2.  **Run the script**:
+2.  **Run the script:**
 
-    On Windows (PowerShell/CMD)**:
+    * **Windows (Admin Terminal):**
         ```powershell
         python Multi-Tools_v1.2.py
         ```
-    On Linux (Terminal)**:
+    * **Linux (Terminal):**
         ```bash
         sudo python3 Multi-Tools_v1.2.py
         ```
-
 ---
 
 ## 🔍 Technical Details
