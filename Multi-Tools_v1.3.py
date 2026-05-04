@@ -342,6 +342,7 @@ def uuid_spoofer():
             header('CHANGE UUID')
             print('Old:', cur)
             print('New:', new)
+            backup('SMBIOS UUID', cur, new)
             if input('\nApply? (y/n): ').lower() == 'y':
                 ps = "$p='HKLM:\\HARDWARE\\DESCRIPTION\\System';if(-not(Test-Path $p)){New-Item $p -F|Out-Null};Set-ItemProperty $p SystemUuid '" + new + "' -Type String -Force"
                 _, err, rc = run_cmd('powershell -C "' + ps + '"')
