@@ -128,9 +128,48 @@ If you encounter permission errors despite having admin rights, verify that **Ta
 
 ---
 
-## 🤝 Collaboration & Roadmap
+<div align="center">
 
-We are looking for contributors to expand the tool's technical capabilities:
+## 🤝 Collaboration & Contributions
+
+**We encourage community involvement to advance the project.** If you wish to propose new features, optimize existing modules, or report technical inconsistencies, please follow the standard contribution workflow:
+
+</div>
+
+1.  **Fork the Repository**: Create a personal copy of the project by clicking the `Fork` button.
+
+2.  **Branch Management**: Create a dedicated branch for your feature (`git checkout -b feature/AdvancedModule`).
+
+3.  **Code Quality**: Ensure your code is production-ready and follows the existing logic structure.
+
+4.  **Submission**: Push your changes and open a **Pull Request** for technical review.
+
+---
+
+<div align="center">
+
+## 🗺️ Future Roadmap & Implementation Goals
+
+*We are actively seeking contributors with expertise in low-level system development to implement the following modules:*
+
+</div>
+
+1.  **💾 Kernel-Level Integration**: Shifting from registry-based modification to WDM drivers to manage hardware identifiers at Ring-0, ensuring persistence against deep-system scans.
+
+2.  **🕰️ Forensic Integrity (Timestomping)**: Development of logic to restore original registry "Last Write Time" timestamps, maintaining system consistency and preventing forensic detection.
+
+3.  **🛡️ Anti-Virtualization Modules**: Implementation of advanced techniques to mitigate environment detection (VMware/VirtualBox) for researchers operating within virtualized sandboxes.
+
+4.  **🖥️ Display & Peripheral Obfuscation**: Expanding the toolkit to include Monitor EDID masking and USB Serial Descriptor randomization for HID and storage devices.
+
+---
+
+<div align="center">
+
+### 💡 Feedback & Technical Support
+For bug reports or architectural suggestions, please open a formal **Issue** or start a **Discussion**.  
+
+*Collaborate with us to develop the most comprehensive system utility and security research toolkit.*
 
 ---
 
